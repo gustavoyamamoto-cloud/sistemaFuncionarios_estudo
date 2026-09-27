@@ -49,4 +49,17 @@ public class GlobalHandler {
                     .status(400)
                     .body(respostas);
     }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErroResponse> tratarErroGenerico(Exception ex){
+
+        ErroResponse resposta = new ErroResponse(
+                                        500,
+                                        "erro",
+                                        "Erro interno no sistema");
+
+        return ResponseEntity
+                    .status(500).
+                    body(resposta);
+    }
 }
