@@ -87,4 +87,11 @@ public class FuncionarioService {
                         f.getSalario(),
                         f.getIdade());
     }
+
+    //Deletar
+    public void deletar(Long id){
+
+        buscarId(id);
+        repository.deleteById(id);
+    }
 }
