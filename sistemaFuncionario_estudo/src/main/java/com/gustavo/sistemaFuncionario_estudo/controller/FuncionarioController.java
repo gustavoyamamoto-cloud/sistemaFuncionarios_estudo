@@ -3,6 +3,7 @@ package com.gustavo.sistemaFuncionario_estudo.controller;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,5 +34,10 @@ public class FuncionarioController {
     @PutMapping 
     public FuncionarioResponse cadastrar(@Valid @RequestBody FuncionarioRequest funcionario){
         return service.cadastrar(funcionario);
+    }
+
+    @GetMapping("/{id}")
+    public FuncionarioResponse buscar(@PathVariable Long id){
+        return service.buscarId(id);
     }
 }

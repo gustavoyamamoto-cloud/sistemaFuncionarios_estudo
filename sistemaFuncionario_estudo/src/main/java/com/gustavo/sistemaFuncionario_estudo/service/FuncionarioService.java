@@ -8,6 +8,7 @@ import com.gustavo.sistemaFuncionario_estudo.dto.FuncionarioRequest;
 import com.gustavo.sistemaFuncionario_estudo.dto.FuncionarioResponse;
 import com.gustavo.sistemaFuncionario_estudo.entity.Funcionario;
 import com.gustavo.sistemaFuncionario_estudo.repository.FuncionarioRepository;
+import com.gustavo.sistemaFuncionario_estudo.validation.RecursoNaoEncontradoException;
 
 @Service 
 public class FuncionarioService {
@@ -43,6 +44,20 @@ public class FuncionarioService {
         f.setIdade(funcionario.getIdade());
 
         repository.save(f);
+
+        return new FuncionarioResponse(
+                        f.getId(),
+                        f.getNome(),
+                        f.getEmail(),
+                        f.getSalario(),
+                        f.getIdade());
+    }
+
+    //Buscar
+    public FuncionarioResponse buscarId(Long id){
+
+        Funcionario f = repository.findById(id)
+                                    .orElseThrow(() -> new RecursoNaoEncontradoException("Id não encontrado"));
 
         return new FuncionarioResponse(
                         f.getId(),
