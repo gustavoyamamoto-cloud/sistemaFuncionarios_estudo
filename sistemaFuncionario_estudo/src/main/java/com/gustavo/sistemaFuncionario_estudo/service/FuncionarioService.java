@@ -1,7 +1,10 @@
 package com.gustavo.sistemaFuncionario_estudo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.gustavo.sistemaFuncionario_estudo.dto.FuncionarioResponse;
 import com.gustavo.sistemaFuncionario_estudo.repository.FuncionarioRepository;
 
 @Service 
@@ -13,5 +16,17 @@ public class FuncionarioService {
         this.repository = repository;
     }
 
-    
+    //Listar
+    public List<FuncionarioResponse> listar(){
+
+        return repository.findAll()
+                            .stream()
+                            .map(f -> new FuncionarioResponse(
+                                                f.getId(),
+                                                f.getNome(),
+                                                f.getEmail(),
+                                                f.getSalario(),
+                                                f.getIdade()))
+                            .toList();
+    }
 }
