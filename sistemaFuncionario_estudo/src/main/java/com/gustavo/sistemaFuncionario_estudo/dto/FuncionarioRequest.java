@@ -1,9 +1,10 @@
 package com.gustavo.sistemaFuncionario_estudo.dto;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
 
 public class FuncionarioRequest {
     
@@ -16,7 +17,8 @@ public class FuncionarioRequest {
     @Positive(message = "Salario deve ser positivo") 
     private double salario;
 
-    @Size(min = 18, max = 70, message = "Idade deve ser entre 18 a 70 anos")
+    @Min(value = 18, message = "Idade deve ser entre 18 a 70 anos")
+    @Max(value = 70, message = "Idade deve ser entre 18 a 70 anos")
     private int idade;
 
 
