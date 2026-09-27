@@ -66,4 +66,25 @@ public class FuncionarioService {
                         f.getSalario(),
                         f.getIdade());
     }
+
+    //Atualizar
+    public FuncionarioResponse atualizar(Long id, FuncionarioRequest funcionarioNovo){
+
+        Funcionario f = repository.findById(id)
+                                    .orElseThrow(() -> new RecursoNaoEncontradoException("Id não encontrado"));
+
+        f.setNome(funcionarioNovo.getNome());
+        f.setEmail(funcionarioNovo.getEmail());
+        f.setSalario(funcionarioNovo.getSalario());
+        f.setIdade(funcionarioNovo.getIdade());
+
+        repository.save(f);
+
+        return new FuncionarioResponse(
+                        f.getId(),
+                        f.getNome(),
+                        f.getEmail(),
+                        f.getSalario(),
+                        f.getIdade());
+    }
 }
