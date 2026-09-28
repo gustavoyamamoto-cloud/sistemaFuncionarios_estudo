@@ -94,4 +94,19 @@ public class FuncionarioService {
         buscarId(id);
         repository.deleteById(id);
     }
+
+    //Buscar por email
+    public List<FuncionarioResponse> buscarPorEmail(String email){
+        
+        List<Funcionario> funcionario = repository.findByEmail(email);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
 }

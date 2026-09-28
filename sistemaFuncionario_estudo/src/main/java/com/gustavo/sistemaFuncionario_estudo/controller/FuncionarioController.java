@@ -49,7 +49,13 @@ public class FuncionarioController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletar(Long id){
+    public void deletar(@PathVariable Long id){
         service.deletar(id);
+    }
+
+
+    @GetMapping("/email/{emaill}")
+    public List<FuncionarioResponse> buscarPorEmail(@PathVariable String email){
+        return service.buscarPorEmail(email);
     }
 }
