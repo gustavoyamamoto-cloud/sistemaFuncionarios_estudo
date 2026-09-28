@@ -124,4 +124,34 @@ public class FuncionarioService {
                                             f.getIdade()))
                             .toList();
     }
+
+    //Buscar idade menor que ...
+    public List<FuncionarioResponse> buscarIdadeMenorQue(int idade){
+
+        List<Funcionario> funcionario = repository.findByIdadeLessThan(idade);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
+
+    //Buscar salario entre valores
+    public List<FuncionarioResponse> buscarSalarioEntreValores(double min, double max){
+
+        List<Funcionario> funcionario = repository.findBySalarioBetween(min, max);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
 }
