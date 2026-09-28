@@ -15,4 +15,6 @@ public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
     List<Funcionario> findBySalarioGreaterThan(double salario);
     List<Funcionario> findByIdadeLessThan(int idade);
     List<Funcionario> findBySalarioBetween(double min, double max);
+
+    List<Funcionario> findByNomeContainingIgnoreCase(String nome);
 }

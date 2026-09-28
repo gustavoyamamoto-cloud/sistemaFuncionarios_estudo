@@ -154,4 +154,19 @@ public class FuncionarioService {
                                             f.getIdade()))
                             .toList();
     }
+
+    //Buscar nome ignorando maiusculos e minusculas
+    public List<FuncionarioResponse> buscarPorNome(String nome){
+
+        List<Funcionario> funcionario = repository.findByNomeContainingIgnoreCase(nome);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
 }

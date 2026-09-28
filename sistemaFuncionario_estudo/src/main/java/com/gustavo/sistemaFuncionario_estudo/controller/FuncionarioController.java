@@ -54,10 +54,13 @@ public class FuncionarioController {
     }
 
 
+
     @GetMapping("/email/{email}")
     public List<FuncionarioResponse> buscarPorEmail(@PathVariable String email){
         return service.buscarPorEmail(email);
     }
+
+
 
     @GetMapping("/salario-maiorQue/{salario}")
     public List<FuncionarioResponse> buscarSalarioMaiorQue(@PathVariable double salario){
@@ -69,8 +72,14 @@ public class FuncionarioController {
         return service.buscarIdadeMenorQue(idade);
     }
 
-    @GetMapping("/salario-entre/{max}/{min}")
+    @GetMapping("/salario-entre/{min}/{max}")
     public List<FuncionarioResponse> buscarSalarioEntreValores(@PathVariable double min, @PathVariable double max){
         return service.buscarSalarioEntreValores(min, max);
+    }
+
+
+    @GetMapping("/nome/{nome}")
+    public List<FuncionarioResponse> buscarPorNome(@PathVariable String nome){
+        return service.buscarPorNome(nome);
     }
 }
