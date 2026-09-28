@@ -82,4 +82,15 @@ public class FuncionarioController {
     public List<FuncionarioResponse> buscarPorNome(@PathVariable String nome){
         return service.buscarPorNome(nome);
     }
+
+
+    @GetMapping("/nomeOuEmail/{nome}/{email}")
+    public List<FuncionarioResponse> buscarNomeOrEmail(@PathVariable String nome, @PathVariable String email){
+        return service.buscarNomeOrEmail(nome, email);
+    }
+
+    @GetMapping("/nomeAndIdade/{nome}/{idade}")
+    public List<FuncionarioResponse> buscarNomeAndIdade(@PathVariable String nome, @PathVariable int idade){
+        return service.buscarNomeAndIdade(nome, idade);
+    }
 }

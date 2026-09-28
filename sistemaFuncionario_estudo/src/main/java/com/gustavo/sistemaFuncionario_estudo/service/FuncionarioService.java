@@ -169,4 +169,36 @@ public class FuncionarioService {
                                             f.getIdade()))
                             .toList();
     }
+
+
+
+    //Buscar nome ou email
+    public List<FuncionarioResponse> buscarNomeOrEmail(String nome, String email){
+
+        List<Funcionario> funcionario = repository.findByNomeOrEmail(nome, email);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
+
+    //Buscar nome e idade
+    public List<FuncionarioResponse> buscarNomeAndIdade(String nome, int idade){
+
+        List<Funcionario> funcionario = repository.findByNomeAndIdade(nome, idade);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
 }
