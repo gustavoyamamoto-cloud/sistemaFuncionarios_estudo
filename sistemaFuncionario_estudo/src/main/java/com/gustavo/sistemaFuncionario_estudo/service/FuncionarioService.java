@@ -109,4 +109,19 @@ public class FuncionarioService {
                                             f.getIdade()))
                             .toList();
     }
+
+    //Buscar salarios Maior que ...
+    public List<FuncionarioResponse> buscarSalarioMaiorQue(double salario){
+
+        List<Funcionario> funcionario = repository.findBySalarioGreaterThan(salario);
+
+        return funcionario.stream()
+                            .map(f -> new FuncionarioResponse(
+                                            f.getId(),
+                                            f.getNome(),
+                                            f.getEmail(),
+                                            f.getSalario(),
+                                            f.getIdade()))
+                            .toList();
+    }
 }

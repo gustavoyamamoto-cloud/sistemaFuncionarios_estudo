@@ -11,4 +11,6 @@ import com.gustavo.sistemaFuncionario_estudo.entity.Funcionario;
 public interface FuncionarioRepository extends JpaRepository<Funcionario, Long>{
     
     List<Funcionario> findByEmail(String email);
+
+    List<Funcionario> findBySalarioGreaterThan(double salario);
 }

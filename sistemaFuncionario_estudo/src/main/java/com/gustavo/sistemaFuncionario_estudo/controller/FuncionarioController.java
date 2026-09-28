@@ -54,8 +54,13 @@ public class FuncionarioController {
     }
 
 
-    @GetMapping("/email/{emaill}")
+    @GetMapping("/email/{email}")
     public List<FuncionarioResponse> buscarPorEmail(@PathVariable String email){
         return service.buscarPorEmail(email);
+    }
+
+    @GetMapping("/maior-que/{salario}")
+    public List<FuncionarioResponse> buscarSalarioMaiorQue(@PathVariable double salario){
+        return service.buscarSalarioMaiorQue(salario);
     }
 }
